@@ -3,7 +3,7 @@
 ![Build](https://github.com/ModioMori/HarmonyXPack/actions/workflows/build.yml/badge.svg)
 
 A ready-to-use dependency, packing in the latest HarmonyX (and consequently MonoMod/Cecil) for other Gladio Mori mods to rely upon.
-[Find it on mod.io here.](https://mod.io/g/gladio-mori/m/harmonyxpack#)
+[Find it on mod.io here.](https://mod.io/g/gladio-mori/m/harmonyxpack)
 
 ## Usage
 
