@@ -24,9 +24,9 @@ jobs:
         dotnet build --configuration Release
 
     - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: Build
         path: |
-          bin/Debug/netstandard2.1/GladioMorePlayers.dll
-          bin/Release/netstandard2.1/GladioMorePlayers.dll
+          bin/Debug
+          bin/Release
