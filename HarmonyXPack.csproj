@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<AssemblyName>HarmonyXPack</AssemblyName>
+		<Description>Redistribution of HarmonyX for Gladio Mori modding, targetting .NET Framework 4.7.2.</Description>
+		<Version>2.16.0</Version>
+		<TargetFramework>net472</TargetFramework>
+		<!-- Force nuget assembly output -->
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="HarmonyX" Version="2.16.0" />
+	</ItemGroup>
+	
+	<Target Name="RemoveEmptyAssembly" AfterTargets="PostBuildEvent">
+		<ItemGroup>
+			<EmptyAssembly Include="$(MSBuildThisFileDirectory)bin\**\HarmonyXPack.*" />
+		</ItemGroup>
+		<Delete Files="@(EmptyAssembly)" />
+	</Target>
+</Project>
