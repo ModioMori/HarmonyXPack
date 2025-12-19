@@ -1,21 +1,24 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk" DefaultTargets="Pack">
 	<PropertyGroup>
-		<AssemblyName>HarmonyXPack</AssemblyName>
+		<AssemblyName>ModioMori.HarmonyXPack</AssemblyName>
 		<Description>Redistribution of HarmonyX for Gladio Mori modding, targetting .NET Framework 4.7.2.</Description>
 		<Version>2.16.0</Version>
-		<TargetFramework>net472</TargetFramework>
-		<!-- Force nuget assembly output -->
-		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<TargetFramework>net481</TargetFramework>
+
+		<!-- Prevent empty assembly from being built/copied to the output folder. -->
+		<IncludeBuildOutput>false</IncludeBuildOutput>
+		<IncludeSymbols>false</IncludeSymbols>
+		<CopyBuildOutputToOutputDirectory>false</CopyBuildOutputToOutputDirectory>
+		<CopyOutputSymbolsToOutputDirectory>false</CopyOutputSymbolsToOutputDirectory>
 	</PropertyGroup>
-	
+
+	<!-- Include an empty file to suppress a warning.  -->
+	<!-- https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5128 -->
 	<ItemGroup>
-		<PackageReference Include="HarmonyX" Version="2.16.0" />
+		<None Include="_._" Pack="true" Visible="false" PackagePath="lib/net481" />
 	</ItemGroup>
 	
-	<Target Name="RemoveEmptyAssembly" AfterTargets="PostBuildEvent">
-		<ItemGroup>
-			<EmptyAssembly Include="$(MSBuildThisFileDirectory)bin\**\HarmonyXPack.*" />
-		</ItemGroup>
-		<Delete Files="@(EmptyAssembly)" />
-	</Target>
+	<ItemGroup>
+		<PackageReference Include="HarmonyX" Version="2.16.0" PrivateAssets="runtime" />
+	</ItemGroup>
 </Project>
